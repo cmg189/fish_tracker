@@ -1,24 +1,43 @@
 #include "catch.h"
 
+int display_menu();
 
 int main(){
-  Catch fish;
-  cout << "\nFish Tracker\n\nEnter catch information\n\n";
+  cout << "\nFish Tracker\n\n";
+  
+  int choice;
+  do{
+     choice = display_menu();
+    switch(choice){
+      case 1:
+        cout << "log\n";
+        break;
+      case 2:
+        cout << "output\n";
+        break;
+      case 0:
+        cout << "exit\n";
+        break;
+      default:
+        cout << "invalid option\n\n";
+        break;
+    }
 
-  int user_time;
-  cout << "Time: ";
-  cin >> user_time;
-
-  string user_location;
-  cout << "Location: ";
-  cin >> user_location;
-
-  fish.set_time(user_time);
-  fish.set_location(user_location);
-
-  cout << "\nFish was caught at " << fish.get_time() << " in " << fish.get_location() << endl;
+  }while(choice != 0);
 
 
   cout << "\nProgram ended\n\n";
   return 0;
+}
+
+int display_menu(){
+  int choice;
+  cout << "Choose a menu option:\n\n";
+  cout << "1: Log new catch\n";
+  cout << "2: Output all catches\n";
+  cout << "0: End program\n\n";
+  cout << ">";
+  cin >> choice;
+
+  return choice;
 }
