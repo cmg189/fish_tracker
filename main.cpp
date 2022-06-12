@@ -1,27 +1,20 @@
 #include "catch.h"
 
 int display_menu();
+void log_fish();
 
 int main(){
-  cout << "\nFish Tracker\n\n";
-  
+  cout << "\n\t\t\tFish Tracker\n\n";
+
   int choice;
   do{
      choice = display_menu();
-    switch(choice){
-      case 1:
-        cout << "log\n";
-        break;
-      case 2:
-        cout << "output\n";
-        break;
-      case 0:
-        cout << "exit\n";
-        break;
-      default:
-        cout << "invalid option\n\n";
-        break;
-    }
+     switch(choice){
+      case 1: log_fish(); break;
+      case 2: cout << "output\n"; break;
+      case 0: cout << "exit\n"; break;
+      default: cout << "invalid option\n\n"; break;
+     }
 
   }while(choice != 0);
 
@@ -40,4 +33,26 @@ int display_menu(){
   cin >> choice;
 
   return choice;
+}
+
+void log_fish(){
+
+  float catch_weight;
+  int catch_time;
+  string catch_location;    // get object info from user
+
+  cout << "\nEnter time of catch\n>";
+  cin >> catch_time;
+  cout << "Enter catch location\n>";
+  cin >> catch_location;
+  cout << "Enter weight in grams\n>";
+  cin >> catch_weight;
+
+  Catch fish(catch_time, catch_location, catch_weight);  // initalize object
+
+  cout << "\nTime: " << fish.get_time() << "\nPlace: " << fish.get_location() << "\nWeight: " << fish.get_weight() << "\n\n";
+
+
+  return;
+
 }
